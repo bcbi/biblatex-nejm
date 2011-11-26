@@ -1,0 +1,28 @@
+%%$Id: nejm.bbx 9 2011-08-31 11:15:54Z marco $
+
+README biblatex-nejm
+
+This package provides only a formated numeric style of the package
+biblatex. The design based on the New England Journal of Medicine (NEJM).
+
+--------------------------------
+v.04
+- changed formating of date -- only year is printed
+- added option printlang
+
+--------------------------------
+v.03
+- changed required cite style of biblatex to numeric-comp
+- changed required bibliography style of biblatex to standard
+- added option sorting=none as standard
+- added new option articledoi (true or false) to print the doi of type article (default=false)
+- added new option articlein (true or false) to print "in" of type article (default=false)
+- execute option isbn=false
+
+--------------------------------
+v.02
+- fixes bug
+
+--------------------------------
+v.01
+- submitted style
