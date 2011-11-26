@@ -1,0 +1,270 @@
+%%$Id: biblatex-nejm.tex 28 2011-09-09 17:17:01Z marco $
+%%$Rev: 28 $
+%%$Author: marco $
+%%$Date: 2011-09-09 19:17:01 +0200 (Fr, 09. Sep 2011) $
+\def\biblatexnejmversiontex{v0.4}
+\def\biblatexnejmpackagenametex{biblatex-nejm.tex}
+\def\biblatexnejmsvntex$#1: #2 #3 #4-#5-#6 #7 #8${#4/#5/#6\space }
+
+
+
+\documentclass[english]{ltxdockit}[2011/03/25]
+\usepackage{btxdockit}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[strict]{csquotes}
+
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage[style=nejm,backend=biber]{biblatex}
+\addbibresource{\jobname}
+
+\newcommand*{\biber}{Biber\xspace}
+\newcommand*{\biblatex}{Biblatex\xspace}
+\newcommand*{\biblatexnejm}{biblatex-nejm\xspace}
+\newcommand*{\biblatexctan}{http://www.ctan.org/tex-archive/macros/latex/contrib/biblatex/}
+
+\titlepage{%
+  title={The \sty{biblatex-nejm} Package},
+  subtitle={Modification of \biblatex for New England Journal of Medicine (NEJM)},
+  url={\biblatexctan},
+  author={Marco Daniel},
+  email={marco.daniel@mada-nada.de},
+  revision={\biblatexnejmversiontex},
+  date={\biblatexnejmsvnbbx$Id: biblatex-nejm.tex 28 2011-09-09 17:17:01Z marco $}}
+
+\hypersetup{%
+  citecolor=red,
+  pdftitle={The \biblatex-NEJM Package},
+  pdfsubject={Modification of \biblatex for New England Journal of Medicine (NEJM)},
+  pdfauthor={Marco Daniel},
+  pdfkeywords={tex, latex, bibtex, bibliography, references, citation, NEJM}}
+
+% tables
+
+\newcolumntype{H}{>{\sffamily\bfseries\spotcolor}l}
+\newcolumntype{L}{>{\raggedright\let\\=\tabularnewline}p}
+\newcolumntype{R}{>{\raggedleft\let\\=\tabularnewline}p}
+\newcolumntype{V}{>{\raggedright\let\\=\tabularnewline\ttfamily}p}
+
+\newcommand*{\sorttablesetup}{%
+  \tablesetup
+  \ttfamily
+  \def\new{\makebox[1.25em][r]{\ensuremath\rightarrow}\,}%
+  \def\alt{\par\makebox[1.25em][r]{\ensuremath\hookrightarrow}\,}%
+  \def\note##1{\textrm{##1}}}
+
+% markup and misc
+
+\setcounter{secnumdepth}{4}
+
+
+\newrobustcmd*{\Deprecated}{%
+  \textcolor{spot}{\margnotefont Deprecated}}
+\newrobustcmd*{\DeprecatedMark}{%
+  \leavevmode\marginpar{\Deprecated}}
+\newrobustcmd*{\BiberOnly}{%
+  \textcolor{spot}{\margnotefont Biber only}}
+\newrobustcmd*{\BiberOnlyMark}{%
+  \leavevmode\marginpar{\BiberOnly}}
+\newrobustcmd*{\BibTeXOnly}{%
+  \textcolor{spot}{\margnotefont BibTeX only}}
+\newrobustcmd*{\BibTeXOnlyMark}{%
+  \leavevmode\marginpar{\BibTeXOnly}}
+
+\hyphenation{%
+  star-red
+  bib-lio-gra-phy
+  white-space
+}
+
+\begin{document}
+
+\printtitlepage
+\tableofcontents
+
+
+\section{Introduction}
+\label{int}
+
+This package is a contributed \biblatex style. The idea base on a question at \href{http://tex.stackexchange.com/questions/26891/biblatex-style-file-for-new-england-journal-of-medicine-nejm/26894#26894}{Stack Exchange}. The package itself only redefine existing macros and use some of the \biblatex options. This package doesn't provide some new feature. If you want to use additional feature you can use the options and commands of the package \biblatex itself. 
+
+\subsection[About]{About \sty{biblatex}}
+\label{int:abt}
+
+This package was tested with \biblatex verson 1.6.
+
+
+\subsection{License}
+Copyright \textcopyright\ 2011 Marco Daniel. Permission is granted to copy, distribute and\slash or modify this software under the terms of the \lppl, version 1.3.\fnurl{http://www.ctan.org/tex-archive/macros/latex/base/lppl.txt} This package is author"=maintained.
+
+\subsection{Feedback}
+\label{int:feb}
+
+You can wrote me an \href{mailto:marco.daniel@mada-nada.de}{e-mail} or ask a question on \href{http://tex.stackexchange.com}{Stack Exchange}. 
+
+In both cases it is very important that you provide a \href{http://www.minimalbeispiel.de/mini-en.html}{minimal working example}.
+
+\section{Installation}
+\label{inst}
+
+The package is avaidable on \href{http://www.ctan.org}{CTAN}. It will be installed by you package manager (\href{http://www.tug.org/texlive}{TeX Live} or \href{http://www.miktex.org}{MikTeX}).
+
+If you don't want to use the package manager you can install the files directly in the search path of your distribution or in you working folder.
+
+\section[Guidelines for NEJM]{Guidelines for  New England Journal of Medicine}
+\label{guidlines}
+The motivation is the question on \href{http://tex.stackexchange.com/questions/26891/biblatex-style-file-for-new-england-journal-of-medicine-nejm/26894#26894}{Stack Exchange}. \href{http://www.nejm.org/page/author-center/manuscript-submission}{The guidelines are written at the page of NEJM itself}.
+
+The guidlines are listed below:
+\begin{quote}
+References must be double-spaced and numbered consecutively as they are cited. References first cited in a table or figure legend should be numbered so that they will be in sequence with references cited in the text at the point where the table or figure is first mentioned. List all authors when there are six or fewer; when there are seven or more, list the first three, followed by \glqq et al.\grqq\ The following are sample references:
+\begin{enumerate}
+ \item    Shapiro AMJ, Lakey JRT, Ryan EA, et al. Islet transplantation in seven patients with type 1
+          diabetes mellitus using a glucocorticoid-free immunosuppressive regimen. N Engl J Med 
+          2000;343:230-8.
+ \item    Goadsby PJ. Pathophysiology of headache. In: Silberstein SD, Lipton RB, Dalessio DJ, eds.
+          Wolff's headache and other head pain. 7th ed. Oxford, England: Oxford University Press,
+          2001:57-72.
+ \item    Kuczmarski RJ, Ogden CL, Grammer-Strawn LM, et al. CDC growth charts: United States. Advance
+          data from vital and health statistics. No. 314. Hyattsville, Md.: National Center for Health
+          Statistics, 2000. (DHHS publication no. (PHS) 2000-1250 0-0431.)
+ \item    U.S. positions on selected issues at the third negotiating session of the Framework Convention
+          on Tobacco Control. Washington, D.C.: Committee on Government Reform, 2002. (Accessed March
+          4, 2002, at \url{http://www.house.gov/reform/min/inves_tobacco/index_accord.htm.})
+\end{enumerate}
+Numbered references to personal communications, unpublished data, or manuscripts either \glqq in preparation\grqq\ or \glqq submitted for publication\grqq are unacceptable. If essential, such material can be incorporated at the appropriate place in the text.
+\end{quote}
+Based on these examples the \file{bib} file will be created.
+
+\section{Usage}
+\label{usage}
+The package consists of the files \file{nejm.cbx}, \file{nejm.bbx}, \file{biblatex-nejm.tex} and \file{biblatex-nejm.pdf}. 
+
+You can use the following code in your header.
+\begin{lstlisting}[style=latex]{}
+\usepackage[style=nejm]{biblatex}
+\end{lstlisting}
+\subsection{Used options}
+The following options will be set by the package
+
+\kern\baselineskip
+\begin{multicols}{2}
+\begin{itemize}
+ \item \kvopt{minnames}{3}
+ \item \kvopt{maxnames}{6}
+ \item \kvopt{terseinits}{true}
+ \item \kvopt{firstinits}{true}
+ \item \kvopt{isbn}{false}
+ \item \kvopt{labelnumber}{true}
+ \item \kvopt{sorting}{false}
+\end{itemize}
+\end{multicols}
+
+\kern\baselineskip
+You should also use the option \kvopt{backend}{biber}. Some settings doesn't work with \bibtex.
+
+\BiberOnlyMark For example the package redefine the command \cmd{bibinitperiod} which only works with \biber.
+
+\subsection{New options}
+\begin{optionlist}
+\boolitem[false]{articledoi}
+
+Print the \bibfield{doi} also for type \prm{article}
+
+\boolitem[false]{articlein}
+
+Print the \bibfield{\cmd{bibstring}\{in\}} also for type \prm{article}
+
+\boolitem[false]{printlang}
+
+Print the \bibfield{language}
+
+\end{optionlist}
+
+\subsection{Bibliopgraphy Entries}
+In relation to \secref{guidlines} the following code represented the examples in the \file{bib} file. The code will be automaticly used as the \file{bib} file.
+\begin{lstlisting}[style=bibtex]{}
+%% Examples for biblatex-nejm
+@ARTICLE{Shapiro2000,
+  author   = "A.M. James Shapiro and Jonathan R.T. Lakey and
+              Edmond A. Ryan and Gregory S. Korbutt and Ellen Toth and
+              Garth L. Warnock and Norman M. Kneteman and Ray V. Rajotte",
+  title    = "Islet transplantation in seven patients with type 1 diabetes
+              mellitus using a glucocorticoid-free immunosuppressive regimen",
+  journal  = "N Engl J Med",
+  year     = "2000",
+  number   = "2",
+  volume   = "343",
+  pages    = "230-8"
+}
+
+@ARTICLE{Goadsby2001,
+  author   = "Peter J. Goadsby",
+  title    = "Pathophysiology of headache",
+  journaltitle = "Silberstein SD, Lipton RB, D'Alessio DJ, eds",
+  journalsubtitle="Wolff's Headache and Other Head Pain",
+  location = " {Oxford, England}",
+  publisher= "Oxford University Press",
+  edition  = "7",
+  year     = "2001",
+  pages    = "57-72"
+}
+
+@ONLINE{usposition2002,
+  title    = "U.S. positions on selected issues at the third negotiating
+              session of the Framework Convention on Tobacco Control",
+  location = " {Washington, D.C.}",
+  publisher= "Committee on Government Reform",
+  year     = "2002",
+  addendum = "(Accessed March 4, 2002,
+               \url{http://www.house.gov/reform/min/inves_tobacco/index_accord.htm})"
+}
+
+@ARTICLE{Kuczmarski2000,
+  author   = "Cynthia L. Ogden and Robert J. Kuczmarski and Katherine M. Flegal
+              and Zuguo Mei, MD and Shumei Guo and Rong Wei and
+              Laurence M. Grummer-Strawn and Lester R. Curtin and
+              Alex F. Roche and Clifford L. Johnson",
+  title    = "CDC growth charts: United States. Advance data from
+              vital and health statistics. No. 314",
+  journaltitle  = "National Center for Health Statistics",
+  location = " {Hyattsville, Md} ",
+  year     = "2000",
+  addendum = "(DHHS publication no. (PHS) 2000-1250 0-0431)"
+}
+\end{lstlisting}
+\clearpage
+\subsection{Result of cite-commands}
+In the following table I present the standard cite-command with their output. The list of avaidable cite-commands is much bigger. For more details see the documentation of \href{\biblatexctan}{\biblatex}
+
+\begin{table}[!ht]
+\tablesetup
+\renewcommand*\arraystretch{1.25}
+\begin{tabularx}{\textwidth}{@{}>{\ttfamily}p{80pt}*{3}{>{\qquad}c<{\qquad}}X@{}}
+\toprule
+\multicolumn{1}{@{}H}{\texttt{key}} &
+\multicolumn{1}{@{}H}{\texttt{\textbackslash cite}} &
+\multicolumn{1}{@{}H}{\texttt{\textbackslash parencite}}&
+\multicolumn{1}{@{}H}{\texttt{\textbackslash supercite}}&
+\multicolumn{1}{@{}H}{\texttt{\textbackslash textcite}}  \\
+\cmidrule(r){1-1}\cmidrule(r){2-2}\cmidrule(r){3-3}\cmidrule(r){4-4}\cmidrule{5-5}
+Kuczmarski2000    & \cite{Kuczmarski2000}      & \parencite{Kuczmarski2000} 
+                  & \supercite{Kuczmarski2000} & \textcite{Kuczmarski2000}\\
+usposition2002    & \cite{usposition2002}      & \parencite{usposition2002}
+                  & \supercite{usposition2002} & \textcite{usposition2002}\\
+Goadsby2001       & \cite{Goadsby2001}         & \parencite{Goadsby2001}
+                  & \supercite{Goadsby2001}    & \textcite{Goadsby2001}\\
+Shapiro2000       & \cite{Shapiro2000}         & \parencite{Shapiro2000}
+                  & \supercite{Shapiro2000}    & \textcite{Shapiro2000}\\
+\bottomrule
+\end{tabularx}
+\caption{Output for diffenrent cite-commands}
+\label{use:cite}
+\end{table}
+\subsection{Result of the bibliography}
+
+\printbibliography
+\end{document}
