@@ -39,7 +39,7 @@
     labelnumber  = true ,
     minnames     = 3 , 
     maxnames     = 6 ,
-    firstinits   = true ,
+    giveninits   = true ,
     terseinits   = true ,
     sorting      = none ,
  %   language     = nejm ,
@@ -102,7 +102,7 @@
 \defbibenvironment{bibliography}
   {\list
      {\printtext[labelnumberwidth]{%
-	\printfield{prefixnumber}%
+	\printfield{labelprefix}%
 	\printfield{labelnumber}}}
      {\setlength{\labelwidth}{\labelnumberwidth}%
       \setlength{\leftmargin}{\labelwidth}%
@@ -154,15 +154,15 @@
 
 
 %Set name format
-\DeclareNameAlias{default}{last-first}
-\DeclareNameAlias{sortname}{last-first}
+\DeclareNameAlias{default}{family-given}
+\DeclareNameAlias{sortname}{family-given}
 %Not needed??
-\DeclareNameAlias{author}{last-first}
-\DeclareNameAlias{editor}{last-first}
-\DeclareNameAlias{translator}{last-first}
+\DeclareNameAlias{author}{family-given}
+\DeclareNameAlias{editor}{family-given}
+\DeclareNameAlias{translator}{family-given}
 
-%remove comma between familyname and firstname
-\renewbibmacro*{name:last-first}[4]{%
+%remove comma between family name and given name
+\renewbibmacro*{name:family-given}[4]{%
   \ifuseprefix
     {\usebibmacro{name:delim}{#3#1}%
      \usebibmacro{name:hook}{#3#1}%
@@ -171,15 +171,15 @@
          {\mkbibnameprefix{\MakeCapital{#3}}\isdot}
      {\mkbibnameprefix{#3}\isdot}%
        \ifpunctmark{'}{}{\bibnamedelimc}}%
-     \mkbibnamelast{#1}\isdot
-     \ifblank{#4}{}{\bibnamedelimd\mkbibnameaffix{#4}\isdot}%
-     \ifblank{#2}{}{\bibnamedelimd\mkbibnamefirst{#2}\isdot}}%remove \addcomma
+     \mkbibnamefamily{#1}\isdot
+     \ifblank{#4}{}{\bibnamedelimd\mkbibnamesuffix{#4}\isdot}%
+     \ifblank{#2}{}{\bibnamedelimd\mkbibnamegiven{#2}\isdot}}%remove \addcomma
     {\usebibmacro{name:delim}{#1}%
      \usebibmacro{name:hook}{#1}%
-     \mkbibnamelast{#1}\isdot
-     \ifblank{#4}{}{\bibnamedelimd\mkbibnameaffix{#4}\isdot}%
+     \mkbibnamefamily{#1}\isdot
+     \ifblank{#4}{}{\bibnamedelimd\mkbibnamesuffix{#4}\isdot}%
 %     \ifblank{#2#3}{}{\addcomma}%%commented
-     \ifblank{#2}{}{\bibnamedelimd\mkbibnamefirst{#2}\isdot}%
+     \ifblank{#2}{}{\bibnamedelimd\mkbibnamegiven{#2}\isdot}%
      \ifblank{#3}{}{\bibnamedelimd\mkbibnameprefix{#3}\isdot}}}
 
 %option articledoi -- no doi / eprint / url in article
