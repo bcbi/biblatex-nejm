@@ -1,9 +1,13 @@
-%%$Id: nejm.bbx 9 2011-08-31 11:15:54Z marco $
+%%$Id: nejm.bbx 30 2018-07-28 11:01:00Z marco $
 
 README biblatex-nejm
 
 This package provides only a formated numeric style of the package
 biblatex. The design based on the New England Journal of Medicine (NEJM).
+
+--------------------------------
+v.05
+- compatibility with newer biblatex releases
 
 --------------------------------
 v.04
