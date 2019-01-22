@@ -31,7 +31,7 @@
   subtitle={Modification of \biblatex for New England Journal of Medicine (NEJM)},
   url={\biblatexctan},
   author={Marco Daniel},
-  email={marco.daniel@mada-nada.de},
+  email={marco.daniel AT mada-nada.de},
   revision={\biblatexnejmversiontex},
   date={\biblatexnejmsvnbbx$Id: biblatex-nejm.tex 28 2011-09-09 17:17:01Z marco $}}
 
@@ -103,7 +103,7 @@ Copyright \textcopyright\ 2011 Marco Daniel. Permission is granted to copy, dist
 \subsection{Feedback}
 \label{int:feb}
 
-You can wrote me an \href{mailto:marco.daniel@mada-nada.de}{e-mail} or ask a question on \href{http://tex.stackexchange.com}{Stack Exchange}. 
+You can wrote me an \href{mailto:marco.daniel AT mada-nada.de}{e-mail} or ask a question on \href{http://tex.stackexchange.com}{Stack Exchange}. 
 
 In both cases it is very important that you provide a \href{http://www.minimalbeispiel.de/mini-en.html}{minimal working example}.
 
@@ -241,29 +241,18 @@ In relation to \secref{guidlines} the following code represented the examples in
 In the following table I present the standard cite-command with their output. The list of avaidable cite-commands is much bigger. For more details see the documentation of \href{\biblatexctan}{\biblatex}
 
 \begin{table}[!ht]
-\tablesetup
-\renewcommand*\arraystretch{1.25}
-\begin{tabularx}{\textwidth}{@{}>{\ttfamily}p{80pt}*{3}{>{\qquad}c<{\qquad}}X@{}}
-\toprule
-\multicolumn{1}{@{}H}{\texttt{key}} &
-\multicolumn{1}{@{}H}{\texttt{\textbackslash cite}} &
-\multicolumn{1}{@{}H}{\texttt{\textbackslash parencite}}&
-\multicolumn{1}{@{}H}{\texttt{\textbackslash supercite}}&
-\multicolumn{1}{@{}H}{\texttt{\textbackslash textcite}}  \\
-\cmidrule(r){1-1}\cmidrule(r){2-2}\cmidrule(r){3-3}\cmidrule(r){4-4}\cmidrule{5-5}
-Kuczmarski2000    & \cite{Kuczmarski2000}      & \parencite{Kuczmarski2000} 
-                  & \supercite{Kuczmarski2000} & \textcite{Kuczmarski2000}\\
-usposition2002    & \cite{usposition2002}      & \parencite{usposition2002}
-                  & \supercite{usposition2002} & \textcite{usposition2002}\\
-Goadsby2001       & \cite{Goadsby2001}         & \parencite{Goadsby2001}
-                  & \supercite{Goadsby2001}    & \textcite{Goadsby2001}\\
-Shapiro2000       & \cite{Shapiro2000}         & \parencite{Shapiro2000}
-                  & \supercite{Shapiro2000}    & \textcite{Shapiro2000}\\
-\bottomrule
-\end{tabularx}
+\begin{tabular}{lllll}
+\hline
+\texttt{key}  & \texttt{\textbackslash cite}  & \texttt{\textbackslash parencite}  & \texttt{\textbackslash supercite}  & \texttt{\textbackslash textcite}  \\ \hline
+Kuczmarski2000  & \cite{Kuczmarski2000}  & \parencite{Kuczmarski2000}  & \supercite{Kuczmarski2000}  & \textcite{Kuczmarski2000}  \\
+usposition2002 & \cite{usposition2002} & \parencite{usposition2002} & \supercite{usposition2002} & \textcite{usposition2002} \\
+Goadsby2001 & \cite{Goadsby2001} & \parencite{Goadsby2001} & \supercite{Goadsby2001} & \textcite{Goadsby2001} \\
+Shapiro2000 & \cite{Shapiro2000} & \parencite{Shapiro2000} & \supercite{Shapiro2000} & \textcite{Shapiro2000} \\ \hline
+\end{tabular}
 \caption{Output for diffenrent cite-commands}
 \label{use:cite}
 \end{table}
+
 \subsection{Result of the bibliography}
 
 \printbibliography
