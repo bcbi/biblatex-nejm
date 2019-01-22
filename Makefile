@@ -4,7 +4,7 @@ PACKAGE   = biblatex-nejm
 PDFLATEX  = pdflatex
 BACKEND   = biber
 
-all:	pdf clean
+all: pdf clean
 
 pdf: $(PACKAGE).tex
 	$(PDFLATEX) $(PACKAGE).tex
@@ -12,12 +12,12 @@ pdf: $(PACKAGE).tex
 	$(PDFLATEX) $(PACKAGE).tex
 	$(PDFLATEX) $(PACKAGE).tex        
 clean:  
-	rm *.aux
-	rm *.bbl
-	rm *.bcf
-	rm *.blg
-	rm *.log
-	rm *.out
-	rm *.run.xml
-	rm *.toc
+	rm -f *.aux
+	rm -f *.bbl
+	rm -f *.bcf
+	rm -f *.blg
+	rm -f *.log
+	rm -f *.out
+	rm -f *.run.xml
+	rm -f *.toc
 
