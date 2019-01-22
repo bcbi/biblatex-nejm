@@ -6,16 +6,16 @@ This package provides only a formated numeric style of the package
 biblatex. The design based on the New England Journal of Medicine (NEJM).
 
 --------------------------------
-v.05
+version 0.5.0
 - compatibility with newer biblatex releases
 
 --------------------------------
-v.04
+version 0.4.0
 - changed formating of date -- only year is printed
 - added option printlang
 
 --------------------------------
-v.03
+version 0.3.0
 - changed required cite style of biblatex to numeric-comp
 - changed required bibliography style of biblatex to standard
 - added option sorting=none as standard
@@ -24,9 +24,9 @@ v.03
 - execute option isbn=false
 
 --------------------------------
-v.02
+version 0.2.0
 - fixes bug
 
 --------------------------------
-v.01
+version 0.1.0
 - submitted style
