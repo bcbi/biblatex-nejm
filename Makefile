@@ -4,22 +4,20 @@ PACKAGE   = biblatex-nejm
 PDFLATEX  = pdflatex
 BACKEND   = biber
 
+all: pdf clean
+
 pdf: $(PACKAGE).tex
 	$(PDFLATEX) $(PACKAGE).tex
 	$(BACKEND)  $(PACKAGE)
 	$(PDFLATEX) $(PACKAGE).tex
 	$(PDFLATEX) $(PACKAGE).tex        
 clean:  
-	@find -maxdepth 1 -type f   \
-	      ! -path ./.svn      \
-	      ! -path "*.bib"     \
-	      ! -path "*.tex"     \
-	      ! -iname "*.tex"    \
-	      ! -iname "*.pdf"    \
-	      ! -iname "*.cbx"    \
-	      ! -iname "*.bbx"    \
-	      ! -iname "README"   \
-	      ! -iname "Makefile" \
-	      -exec rm '{}' +
+	rm -f *.aux
+	rm -f *.bbl
+	rm -f *.bcf
+	rm -f *.blg
+	rm -f *.log
+	rm -f *.out
+	rm -f *.run.xml
+	rm -f *.toc
 
-all:	pdf clean

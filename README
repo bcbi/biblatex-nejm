@@ -8,6 +8,7 @@ biblatex. The design based on the New England Journal of Medicine (NEJM).
 --------------------------------
 version 0.5.0
 - compatibility with newer biblatex releases
+- bug fixes
 
 --------------------------------
 version 0.4.0
