@@ -6,6 +6,10 @@ This package provides only a formated numeric style of the package
 biblatex. The design based on the New England Journal of Medicine (NEJM).
 
 --------------------------------
+version 0.6.0
+- spelling fixes
+
+--------------------------------
 version 0.5.0
 - compatibility with newer biblatex releases
 - bug fixes
