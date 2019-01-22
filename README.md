@@ -5,6 +5,8 @@ biblatex. The design based on the New England Journal of Medicine (NEJM).
 
 The package is available on CTAN here: [https://ctan.org/pkg/biblatex-nejm](https://ctan.org/pkg/biblatex-nejm)
 
+Please submit all feedback, issues, and pull requests to the GitHub repo: [https://github.com/marcodaniel/biblatex-nejm](https://github.com/marcodaniel/biblatex-nejm)
+
 ## Changelog
 
 ### version 0.6.0
