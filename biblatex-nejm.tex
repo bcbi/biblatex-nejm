@@ -91,7 +91,7 @@ Please submit all feedback, issues, and pull requests to the official repository
 \section{Introduction}
 \label{int}
 
-This package is a contributed \biblatex style. The idea base on a question at \href{http://tex.stackexchange.com/questions/26891/biblatex-style-file-for-new-england-journal-of-medicine-nejm/26894#26894}{Stack Exchange}. The package itself only redefine existing macros and use some of the \biblatex options. This package doesn't provide some new feature. If you want to use additional feature you can use the options and commands of the package \biblatex itself. 
+This package is a contributed \biblatex style. The idea base on a question at \href{http://tex.stackexchange.com/questions/26891/biblatex-style-file-for-new-england-journal-of-medicine-nejm/26894#26894}{Stack Exchange}. The package itself only redefine existing macros and use some of the \biblatex options. This package doesn't provide some new feature. If you want to use additional feature you can use the options and commands of the package \biblatex itself.
 
 Please submit all feedback, issues, and pull requests to the official repository: \url{https://github.com/marcodaniel/biblatex-nejm}
 
@@ -124,18 +124,19 @@ The guidelines are listed below:
 \begin{quote}
 References must be double-spaced and numbered consecutively as they are cited. References first cited in a table or figure legend should be numbered so that they will be in sequence with references cited in the text at the point where the table or figure is first mentioned. List all authors when there are six or fewer; when there are seven or more, list the first three, followed by \glqq et al.\grqq\ The following are sample references:
 \begin{enumerate}
- \item    Shapiro AMJ, Lakey JRT, Ryan EA, et al. Islet transplantation in seven patients with type 1
-          diabetes mellitus using a glucocorticoid-free immunosuppressive regimen. N Engl J Med 
+ \frenchspacing
+ \item    Shapiro AMJ, Lakey JRT, Ryan EA, et al. Islet transplantation in seven patients with type~1
+          diabetes mellitus using a glucocorticoid-free immunosuppressive regimen. N Engl J Med
           2000;343:230-8.
- \item    Goadsby PJ. Pathophysiology of headache. In: Silberstein SD, Lipton RB, Dalessio DJ, eds.
-          Wolff's headache and other head pain. 7th ed. Oxford, England: Oxford University Press,
+ \item    Goadsby PJ. Pathophysiology of headache. In: Silberstein SD, Lipton RB, Dalessio DJ, eds.\
+          Wolff's headache and other head pain. 7th~ed. Oxford, England: Oxford University Press,
           2001:57-72.
  \item    Kuczmarski RJ, Ogden CL, Grammer-Strawn LM, et al. CDC growth charts: United States. Advance
-          data from vital and health statistics. No. 314. Hyattsville, Md.: National Center for Health
-          Statistics, 2000. (DHHS publication no. (PHS) 2000-1250 0-0431.)
+          data from vital and health statistics. No.~314. Hyattsville, Md.: National Center for Health
+          Statistics, 2000. (DHHS publication no.~(PHS) 2000-1250 0-0431.)
  \item    U.S. positions on selected issues at the third negotiating session of the Framework Convention
-          on Tobacco Control. Washington, D.C.: Committee on Government Reform, 2002. (Accessed March
-          4, 2002, at \url{http://www.house.gov/reform/min/inves_tobacco/index_accord.htm.})
+          on Tobacco Control. Washington, D.C.: Committee on Government Reform, 2002.\
+          (\url{http://www.house.gov/reform/min/inves_tobacco/index_accord.htm.})
 \end{enumerate}
 Numbered references to personal communications, unpublished data, or manuscripts either \glqq in preparation\grqq\ or \glqq submitted for publication\grqq are unacceptable. If essential, such material can be incorporated at the appropriate place in the text.
 \end{quote}
@@ -143,7 +144,7 @@ Based on these examples the \file{bib} file will be created.
 
 \section{Usage}
 \label{usage}
-The package consists of the files \file{nejm.cbx}, \file{nejm.bbx}, \file{biblatex-nejm.tex} and \file{biblatex-nejm.pdf}. 
+The package consists of the files \file{nejm.cbx}, \file{nejm.bbx}, \file{biblatex-nejm.tex} and \file{biblatex-nejm.pdf}.
 
 You can use the following code in your header.
 \begin{lstlisting}[style=latex]{}
@@ -194,7 +195,7 @@ In relation to \secref{guidlines} the following code represented the examples in
   author   = {A. M. James Shapiro and Jonathan R. T. Lakey
               and Edmond A. Ryan and Gregory S. Korbutt and Ellen Toth
               and Garth L. Warnock and Norman M. Kneteman and Ray V. Rajotte},
-  title    = {Islet transplantation in seven patients with type 1 diabetes
+  title    = {Islet transplantation in seven patients with type~1 diabetes
               mellitus using a glucocorticoid-free immunosuppressive regimen},
   journal  = {N Engl J Med},
   year     = {2000},
@@ -215,13 +216,12 @@ In relation to \secref{guidlines} the following code represented the examples in
   pages     = {57-72},
 }
 @online{usposition2002,
-  title    = {{U.S.} positions on selected issues at the third negotiating
-              session of the {Framework} {Convention} on {Tobacco} {Control}},
-  location = {Washington, D.C.},
-  publisher= {Committee on Government Reform},
-  year     = {2002},
-  addendum = {(Accessed March 4, 2002,
-               \url{http://www.house.gov/reform/min/inves_tobacco/index_accord.htm})},
+  title        = {{U.S.} positions on selected issues at the third negotiating
+                  session of the {Framework} {Convention} on {Tobacco} {Control}},
+  location     = {Washington, D.C.},
+  organization = {Committee on Government Reform},
+  year         = {2002},
+  url          = {http://www.house.gov/reform/min/inves_tobacco/index_accord.htm},
 }
 @article{Kuczmarski2000,
   author   = {Cynthia L. Ogden and Robert J. Kuczmarski and Katherine M. Flegal
@@ -240,20 +240,20 @@ In relation to \secref{guidlines} the following code represented the examples in
 \subsection{Result of cite-commands}
 In the following table I present the standard cite-command with their output. The list of available cite-commands is much bigger. For more details see the documentation of \href{\biblatexctan}{\biblatex}
 
-\begin{table}[!ht]
-\begin{tabular}{lllll}
-\hline
-\texttt{key}  & \texttt{\textbackslash cite}  & \texttt{\textbackslash parencite}  & \texttt{\textbackslash supercite}  & \texttt{\textbackslash textcite}  \\ \hline
+\begin{table}[htbp]
+\begin{tabular}{llllL{4cm}}
+\toprule
+\texttt{key}  & \texttt{\textbackslash cite}  & \texttt{\textbackslash parencite}  & \texttt{\textbackslash supercite}  & \texttt{\textbackslash textcite}  \\
+\midrule
 Kuczmarski2000  & \cite{Kuczmarski2000}  & \parencite{Kuczmarski2000}  & \supercite{Kuczmarski2000}  & \textcite{Kuczmarski2000}  \\
 usposition2002 & \cite{usposition2002} & \parencite{usposition2002} & \supercite{usposition2002} & \textcite{usposition2002} \\
 Goadsby2001 & \cite{Goadsby2001} & \parencite{Goadsby2001} & \supercite{Goadsby2001} & \textcite{Goadsby2001} \\
-Shapiro2000 & \cite{Shapiro2000} & \parencite{Shapiro2000} & \supercite{Shapiro2000} & \textcite{Shapiro2000} \\ \hline
+Shapiro2000 & \cite{Shapiro2000} & \parencite{Shapiro2000} & \supercite{Shapiro2000} & \textcite{Shapiro2000} \\
+\bottomrule
 \end{tabular}
 \caption{Output for different cite-commands}
 \label{use:cite}
 \end{table}
 
-\subsection{Result of the bibliography}
-
-\printbibliography
+\printbibliography[heading=subbibnumbered, title=Result of the bibliography]
 \end{document}
