@@ -166,7 +166,7 @@ The following options will be set by the package
 \end{multicols}
 
 \kern\baselineskip
-You should also use the option \kvopt{backend}{biber}. Some settings doesn't work with \bibtex.
+You should also use the option \kvopt{backend}{biber}. Some settings won't work with \bibtex.
 
 \BiberOnlyMark For example the package redefine the command \cmd{bibinitperiod} which only works with \biber.
 
@@ -190,52 +190,50 @@ Print the \bibfield{language}
 In relation to \secref{guidlines} the following code represented the examples in the \file{bib} file. The code will be automatically used as the \file{bib} file.
 \begin{lstlisting}[style=bibtex]{}
 %% Examples for biblatex-nejm
-@ARTICLE{Shapiro2000,
-  author   = "A.M. James Shapiro and Jonathan R.T. Lakey and
-              Edmond A. Ryan and Gregory S. Korbutt and Ellen Toth and
-              Garth L. Warnock and Norman M. Kneteman and Ray V. Rajotte",
-  title    = "Islet transplantation in seven patients with type 1 diabetes
-              mellitus using a glucocorticoid-free immunosuppressive regimen",
-  journal  = "N Engl J Med",
-  year     = "2000",
-  number   = "2",
-  volume   = "343",
-  pages    = "230-8"
+@article{Shapiro2000,
+  author   = {A. M. James Shapiro and Jonathan R. T. Lakey
+              and Edmond A. Ryan and Gregory S. Korbutt and Ellen Toth
+              and Garth L. Warnock and Norman M. Kneteman and Ray V. Rajotte},
+  title    = {Islet transplantation in seven patients with type 1 diabetes
+              mellitus using a glucocorticoid-free immunosuppressive regimen},
+  journal  = {N Engl J Med},
+  year     = {2000},
+  number   = {2},
+  volume   = {343},
+  pages    = {230-238},
 }
-
-@ARTICLE{Goadsby2001,
-  author   = "Peter J. Goadsby",
-  title    = "Pathophysiology of headache",
-  journaltitle = "Silberstein SD, Lipton RB, D'Alessio DJ, eds",
-  journalsubtitle="Wolff's Headache and Other Head Pain",
-  location = " {Oxford, England}",
-  publisher= "Oxford University Press",
-  edition  = "7",
-  year     = "2001",
-  pages    = "57-72"
+@incollection{Goadsby2001,
+  author    = {Peter J. Goadsby},
+  title     = {Pathophysiology of Headache},
+  editor    = {Stephen D. Silberstein and Richard B. Lipton
+               and Donald J. Dalessio},
+  booktitle = {Wolff's Headache and Other Head Pain},
+  location  = {Oxford, England},
+  publisher = {Oxford University Press},
+  edition   = {7},
+  year      = {2001},
+  pages     = {57-72},
 }
-
-@ONLINE{usposition2002,
-  title    = "U.S. positions on selected issues at the third negotiating
-              session of the Framework Convention on Tobacco Control",
-  location = " {Washington, D.C.}",
-  publisher= "Committee on Government Reform",
-  year     = "2002",
-  addendum = "(Accessed March 4, 2002,
-               \url{http://www.house.gov/reform/min/inves_tobacco/index_accord.htm})"
+@online{usposition2002,
+  title    = {{U.S.} positions on selected issues at the third negotiating
+              session of the {Framework} {Convention} on {Tobacco} {Control}},
+  location = {Washington, D.C.},
+  publisher= {Committee on Government Reform},
+  year     = {2002},
+  addendum = {(Accessed March 4, 2002,
+               \url{http://www.house.gov/reform/min/inves_tobacco/index_accord.htm})},
 }
-
-@ARTICLE{Kuczmarski2000,
-  author   = "Cynthia L. Ogden and Robert J. Kuczmarski and Katherine M. Flegal
+@article{Kuczmarski2000,
+  author   = {Cynthia L. Ogden and Robert J. Kuczmarski and Katherine M. Flegal
               and Zuguo Mei, MD and Shumei Guo and Rong Wei and
               Laurence M. Grummer-Strawn and Lester R. Curtin and
-              Alex F. Roche and Clifford L. Johnson",
-  title    = "CDC growth charts: United States. Advance data from
-              vital and health statistics. No. 314",
-  journaltitle  = "National Center for Health Statistics",
-  location = " {Hyattsville, Md} ",
-  year     = "2000",
-  addendum = "(DHHS publication no. (PHS) 2000-1250 0-0431)"
+              Alex F. Roche and Clifford L. Johnson},
+  title    = {{CDC} growth charts: {United} {States}. {Advance} data from
+              vital and health statistics. {No.} 314},
+  journaltitle  = {National Center for Health Statistics},
+  location = {Hyattsville, Md},
+  year     = {2000},
+  addendum = {(DHHS publication no. (PHS) 2000-1250 0-0431)},
 }
 \end{lstlisting}
 \clearpage

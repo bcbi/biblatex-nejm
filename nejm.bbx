@@ -70,35 +70,111 @@
      }}%
 }
 
-%remove punctuation and space after initials -- require biber
-\renewrobustcmd*{\bibinitperiod}{}
-%separator printed before the pages field
-\renewcommand*{\bibpagespunct}{\addcolon}
-%no bracktes in thebibliography and add dot
 \DeclareFieldFormat{labelnumberwidth}{#1\adddot}
-%not formating pages
-\DeclareFieldFormat*{pages}{\mkcomprange{#1}}
-%not formated journaltitle
-\DeclareFieldFormat*{journaltitle}{#1}
-%not formated title
-\DeclareFieldFormat*{title}{#1}
-
 
 %Set name format
 \DeclareNameAlias{default}{family-given}
 \DeclareNameAlias{sortname}{family-given}
-
-%remove comma between family name and given name
+\DeclareNameAlias{ineditor}{default}
+\renewrobustcmd*{\bibinitperiod}{}
 \renewcommand*{\revsdnamepunct}{}
 
-%option articledoi -- no doi / eprint / url in article
-\letbibmacro{doi+eprint+url-use}{doi+eprint+url}
+\DeclareDelimAlias{finalnamedelim}{multinamedelim}
 
-\renewbibmacro*{doi+eprint+url}{%
-  \ifboolexpr{test {\ifentrytype{article}} and not togl {bbx:articledoi}}
+\DeclareDelimAlias{innametitledelim}{nametitledelim}
+\DeclareDelimAlias*[bib,biblist]{innametitledelim}{nametitledelim}
+
+\DeclareFieldFormat*{title}{#1}
+\DeclareFieldFormat*{booktitle}{#1}
+\DeclareFieldFormat*{journaltitle}{#1}
+\DeclareFieldFormat*{maintitle}{#1}
+
+\renewcommand*{\bibpagespunct}{\addcolon}
+\DeclareFieldFormat*{pages}{\mkcomprange{#1}}
+
+\DeclareFieldFormat{titlecase}{\MakeSentenceCase*{#1}}
+\DeclareFieldAlias{titlecase:title}{titlecase}
+\renewbibmacro*{title}{%
+  \ifboolexpr{
+    test {\iffieldundef{title}}
+    and
+    test {\iffieldundef{subtitle}}
+  }
     {}
-    {\usebibmacro{doi+eprint+url-use}}%
-}
+    {\printtext[title]{%
+       \printfield[titlecase:title]{title}%
+       \setunit{\subtitlepunct}%
+       \printfield[titlecase:title]{subtitle}}%
+     \setunit{\titleaddonpunct}}%
+  \printfield{titleaddon}}
+
+\DeclareFieldAlias{titlecase:booktitle}{titlecase}
+\renewbibmacro*{booktitle}{%
+  \ifboolexpr{
+    test {\iffieldundef{booktitle}}
+    and
+    test {\iffieldundef{booksubtitle}}
+  }
+    {}
+    {\printtext[booktitle]{%
+       \printfield[titlecase:booktitle]{booktitle}%
+       \setunit{\subtitlepunct}%
+       \printfield[titlecase:booktitle]{booksubtitle}}%
+     \setunit{\titleaddonpunct}}%
+  \printfield{booktitleaddon}}
+
+\DeclareFieldAlias{titlecase:maintitle}{titlecase}
+\renewbibmacro*{maintitle}{%
+  \ifboolexpr{
+    test {\iffieldundef{maintitle}}
+    and
+    test {\iffieldundef{mainsubtitle}}
+  }
+    {}
+    {\printtext[maintitle]{%
+       \printfield[titlecase:maintitle]{maintitle}%
+       \setunit{\subtitlepunct}%
+       \printfield[titlecase:maintitle]{mainsubtitle}}%
+     \setunit{\titleaddonpunct}}%
+  \printfield{maintitleaddon}}
+
+\DeclareFieldFormat{titlecase:journaltitle}{#1}
+\renewbibmacro*{journal}{%
+  \ifboolexpr{
+    test {\iffieldundef{journaltitle}}
+    and
+    test {\iffieldundef{journalsubtitle}}
+  }
+    {}
+    {\printtext[journaltitle]{%
+       \printfield[titlecase:journaltitle]{journaltitle}%
+       \setunit{\subtitlepunct}%
+       \printfield[titlecase:journaltitle]{journalsubtitle}}}}
+
+\renewbibmacro*{periodical}{%
+  \ifboolexpr{
+    test {\iffieldundef{title}}
+    and
+    test {\iffieldundef{subtitle}}
+  }
+    {}
+    {\printtext[title]{%
+       \printfield[titlecase:title]{title}%
+       \setunit{\subtitlepunct}%
+       \printfield[titlecase:title]{subtitle}}}}
+
+\DeclareFieldAlias{titlecase:issuetitle}{titlecase}
+\renewbibmacro*{issue}{%
+  \ifboolexpr{
+    test {\iffieldundef{issuetitle}}
+    and
+    test {\iffieldundef{issuesubtitle}}
+  }
+    {}
+    {\printtext[issuetitle]{%
+       \printfield[titlecase:issuetitle]{issuetitle}%
+       \setunit{\subtitlepunct}%
+       \printfield[titlecase:issuetitle]{issuesubtitle}}}}
 
 %no bibstring in in article:
 \renewbibmacro*{in:}{%
@@ -106,6 +182,18 @@
     {}
     {\printtext{\bibstring{in}\intitlepunct}}%
 }
+
+\newbibmacro*{in:editor+others}{%
+  \ifboolexpr{
+    test \ifuseeditor
+    and
+    not test {\ifnameundef{editor}}
+  }
+    {\printnames[ineditor]{editor}%
+     \setunit{\printdelim{editortypedelim}}%
+     \usebibmacro{editor+othersstrg}%
+     \clearname{editor}}
+    {}}
 
 %no number in ouput of bibliography
 \renewbibmacro*{volume+number+eid}{%
@@ -136,4 +224,65 @@
   \usebibmacro{issue}%
   \newunit}
 
+%option articledoi -- no doi / eprint / url in article
+\letbibmacro{doi+eprint+url-use}{doi+eprint+url}
+
+\renewbibmacro*{doi+eprint+url}{%
+  \ifboolexpr{test {\ifentrytype{article}} and not togl {bbx:articledoi}}
+    {}
+    {\usebibmacro{doi+eprint+url-use}}%
+}
+
+\DeclareBibliographyDriver{incollection}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{in:editor+others}%
+  \setunit{\printdelim{innametitledelim}}\newblock
+  \usebibmacro{maintitle+booktitle}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \printfield{edition}%
+  \newunit
+  \iffieldundef{maintitle}
+    {\printfield{volume}%
+     \printfield{part}}
+    {}%
+  \newunit
+  \printfield{volumes}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+  
 \endinput
