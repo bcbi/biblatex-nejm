@@ -1,13 +1,8 @@
 addons:
     apt:
         packages:
-#             - texlive-binaries
-#             - texlive-latex-base
-#             - texlive-latex-extra
-#             - texlive-luatex
               - tar
               - wget
-#             - xzdec
 
 branches:
     only:
@@ -36,11 +31,11 @@ os:
 # ===========================================================================
 
 before_install:
+    - export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
     - wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
     - tar -xzf install-tl-unx.tar.gz
     - cd install-tl-20*
-    - ./install-tl --profile=../texlive/texlive.profile
-#     - tlmgr init-usertree
+    - ./install-tl --profile=../ci/travis/texlive.profile
     - tlmgr install luatex
     - tlmgr install lualatex
     - tlmgr install biblatex
@@ -51,6 +46,7 @@ install:
 before_script:
     - true
 script:
+    - export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
     - ./ci/travis/script.sh
 after_script:
 - true
