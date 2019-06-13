@@ -1,5 +1,7 @@
 # biblatex-nejm
 
+[![Build Status](https://travis-ci.com/bcbi/biblatex-nejm.svg?branch=master)](https://travis-ci.com/bcbi/biblatex-nejm/branches)
+
 The biblatex-nejm package provides only a formated numeric style of the package
 biblatex. The design based on the New England Journal of Medicine (NEJM).
 
