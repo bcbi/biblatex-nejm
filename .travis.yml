@@ -45,6 +45,7 @@ before_install:
     - tlmgr install biblatex
     - tlmgr install biber
     - tlmgr install l3build
+    - tlmgr install ltxdockit
 install:
     - true
 before_script:
