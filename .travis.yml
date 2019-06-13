@@ -5,6 +5,7 @@ addons:
             - texlive-latex-base
             - texlive-latex-extra
             - texlive-luatex
+            - xzdec
 
 branches:
     only:
