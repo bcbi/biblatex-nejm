@@ -1,23 +1,27 @@
-PACKAGE   = biblatex-nejm
 PDFLATEX  = pdflatex
 BACKEND   = biber
 
-default: all
+.PHONY: all clean cleanall pdf
 
-all: pdf clean
+.DEFAULT: all
 
-pdf: $(PACKAGE).tex
-	$(PDFLATEX) $(PACKAGE).tex
-	$(BACKEND)  $(PACKAGE)
-	$(PDFLATEX) $(PACKAGE).tex
-	$(PDFLATEX) $(PACKAGE).tex
+all: biblatex-nejm.pdf
 
-clean:  
-	rm -f *.aux
-	rm -f *.bbl
-	rm -f *.bcf
-	rm -f *.blg
-	rm -f *.log
-	rm -f *.out
-	rm -f *.run.xml
-	rm -f *.toc
+biblatex-nejm.pdf: biblatex-nejm.tex nejm.bbx nejm.cbx
+	$(PDFLATEX) biblatex-nejm.tex
+	$(BACKEND)  biblatex-nejm
+	$(PDFLATEX) biblatex-nejm.tex
+	$(PDFLATEX) biblatex-nejm.tex
+
+clean:
+	rm -rf *.aux
+	rm -rf *.bbl
+	rm -rf *.bcf
+	rm -rf *.blg
+	rm -rf *.log
+	rm -rf *.out
+	rm -rf *.run.xml
+	rm -rf *.toc
+
+cleanall: clean
+	rm -rf biblatex-nejm.pdf

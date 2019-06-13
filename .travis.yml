@@ -1,0 +1,44 @@
+addons:
+    apt:
+        packages:
+            - pdf2svg
+            - pgf
+            - texlive-binaries
+            - texlive-latex-base
+            - texlive-latex-extra
+            - texlive-luatex
+            - texlive-pictures
+
+branches:
+    only:
+        - master
+        - staging
+        - trying
+        - /^release\/.*$/ # release branches
+        - /^v[0-9]+\.[0-9]+\.[0-9]+$/ # version tags
+
+language: bash
+
+matrix:
+    fast_finish: true
+
+notifications:
+    email:
+        on_success: never # default: change
+        on_failure: always # default: always
+
+os:
+    - linux
+
+# ===========================================================================
+
+before_install:
+    - true
+install:
+    - true
+before_script:
+    - true
+script:
+    - ./ci/travis/script.sh
+after_script:
+- true
