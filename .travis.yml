@@ -29,11 +29,12 @@ notifications:
 os:
     - linux
     
-sudo: true
+sudo: required
 
 # ===========================================================================
 
 before_install:
+    - sudo tlmgr init-usertree
     - sudo tlmgr install luatex
     - sudo tlmgr install lualatex
     - sudo tlmgr install biblatex
