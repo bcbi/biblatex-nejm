@@ -19,6 +19,8 @@ branches:
 
 language: bash
 
+latex: true
+
 matrix:
     fast_finish: true
 
@@ -33,7 +35,7 @@ os:
 # ===========================================================================
 
 before_install:
-    - true
+    - tlmgr install l3build
 install:
     - true
 before_script:
