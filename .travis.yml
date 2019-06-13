@@ -46,6 +46,7 @@ before_install:
     - tlmgr install biber
     - tlmgr install l3build
     - tlmgr install ltxdockit
+    - tlmgr install csquotes
 install:
     - true
 before_script:
