@@ -36,6 +36,7 @@ before_install:
     - tar -xzf install-tl-unx.tar.gz
     - cd install-tl-20*
     - ./install-tl --profile=../ci/travis/texlive.profile
+    - cd ..
     - tlmgr update --self
     - tlmgr update --all
     - tlmgr update --self
