@@ -1,0 +1,61 @@
+addons:
+    apt:
+        packages:
+            - tar
+            - wget
+
+branches:
+    only:
+        - master
+        - staging
+        - trying
+        - /^release\/.*$/ # release branches
+        - /^v[0-9]+\.[0-9]+\.[0-9]+$/ # version tags
+
+language: bash
+
+latex: true
+
+matrix:
+    fast_finish: true
+
+notifications:
+    email:
+        on_success: never # default: change
+        on_failure: always # default: always
+
+os:
+    - linux
+    
+
+# ===========================================================================
+
+before_install:
+    - export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
+    - wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+    - tar -xzf install-tl-unx.tar.gz
+    - cd install-tl-20*
+    - ./install-tl --profile=../ci/travis/texlive.profile
+    - cd ..
+    - tlmgr update --self
+    - tlmgr update --all
+    - tlmgr update --self
+    - tlmgr update --all
+    - tlmgr install luatex
+    - tlmgr install biblatex
+    - tlmgr install biber
+    - tlmgr install l3build
+    - tlmgr install ltxdockit
+    - tlmgr install csquotes
+    - tlmgr install logreq
+    - tlmgr install collection-latexrecommended
+    - tlmgr install collection-fontsrecommended
+install:
+    - true
+before_script:
+    - true
+script:
+    - export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
+    - ./ci/travis/script.sh
+after_script:
+- true
