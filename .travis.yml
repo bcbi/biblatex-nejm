@@ -50,8 +50,6 @@ before_install:
     - tlmgr install logreq
     - tlmgr install collection-latexrecommended
     - tlmgr install collection-fontsrecommended
-    - tlmgr install psfonts
-    - tlmgr install bitstrea
 install:
     - true
 before_script:
