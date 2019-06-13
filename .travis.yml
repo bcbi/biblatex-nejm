@@ -4,6 +4,7 @@ addons:
             - pdf2svg
             - pgf
             - texlive-binaries
+            - texlive-full
             - texlive-latex-base
             - texlive-latex-extra
             - texlive-luatex
@@ -35,7 +36,7 @@ os:
 # ===========================================================================
 
 before_install:
-    - tlmgr install l3build
+    - true
 install:
     - true
 before_script:
