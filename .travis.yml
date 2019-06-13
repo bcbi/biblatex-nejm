@@ -1,14 +1,10 @@
 addons:
     apt:
         packages:
-            - pdf2svg
-            - pgf
             - texlive-binaries
-            - texlive-full
             - texlive-latex-base
             - texlive-latex-extra
             - texlive-luatex
-            - texlive-pictures
 
 branches:
     only:
@@ -32,11 +28,17 @@ notifications:
 
 os:
     - linux
+    
+sudo: true
 
 # ===========================================================================
 
 before_install:
-    - true
+    - sudo tlmgr install luatex
+    - sudo tlmgr install lualatex
+    - sudo tlmgr install biblatex
+    - sudo tlmgr install biber
+    - sudo tlmgr install l3build
 install:
     - true
 before_script:
