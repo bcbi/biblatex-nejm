@@ -47,6 +47,7 @@ before_install:
     - tlmgr install l3build
     - tlmgr install ltxdockit
     - tlmgr install csquotes
+    - tlmgr install logreq
 install:
     - true
 before_script:
