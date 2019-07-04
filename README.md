@@ -1,5 +1,6 @@
 # biblatex-nejm
 
+[![Bors enabled](https://bors.tech/images/badge_small.svg)](https://app.bors.tech/repositories/12545)
 [![Build Status](https://travis-ci.com/bcbi/biblatex-nejm.svg?branch=master)](https://travis-ci.com/bcbi/biblatex-nejm/branches)
 
 The `biblatex-nejm` package provides only a formated numeric style of the package
