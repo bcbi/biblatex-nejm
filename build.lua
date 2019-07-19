@@ -25,6 +25,7 @@ function update_tag(file, content, tagname, tagdate)
   local isodate_scheme = "%d%d%d%d%-%d%d%-%d%d"
   local ltxdate_scheme = string.gsub(isodate_scheme, "%-", "/")
   local version_scheme = "%d+%.%d+%.%d+"
+  local version_dev_scheme = version_scheme .. "%-DEV"
   local tagdate_ltx  = string.gsub(tagdate, "%-", "/")
   local tagyear      = string.match(tagdate, "%d%d%d%d")
   local tagname_safe = string.gsub(tagname, "^v", "")
@@ -33,15 +34,26 @@ function update_tag(file, content, tagname, tagdate)
   content = string.gsub(content, "Copyright %(c%) 2011%-%d%d%d%d by",
                                  "Copyright (c) 2011-".. tagyear .. " by")
   -- \ProvidesFile
-  if  string.match(file, "%.bbx$")  or string.match(file, "%.cbx$") then
-    return string.gsub(content , ltxdate_scheme .. " v" .. version_scheme,
-                                 tagdate_ltx .. " v" .. tagname_safe)
+  if string.match(file, "%.bbx$")  or string.match(file, "%.cbx$") then
+    if string.match(content, version_dev_scheme) then
+      return string.gsub(content , ltxdate_scheme .. " v" .. version_dev_scheme,
+                                   tagdate_ltx .. " v" .. tagname_safe)
+    else
+      return string.gsub(content , ltxdate_scheme .. " v" .. version_scheme,
+                                   tagdate_ltx .. " v" .. tagname_safe)
+    end
   -- \titlepage stuff
   elseif string.match(file, "%.tex$") then
     content = string.gsub(content, "date%s*=%s*{" .. isodate_scheme .. "}",
                                    "date={" .. tagdate .."}")
-    return string.gsub(content, "revision%s*=%s*{" .. version_scheme .. "}",
-                                "revision={" .. tagname_safe .. "}")
+    
+    if string.match(content, version_dev_scheme) then
+      return string.gsub(content, "revision%s*=%s*{" .. version_dev_scheme .. "}",
+                                  "revision={" .. tagname_safe .. "}")
+    else
+      return string.gsub(content, "revision%s*=%s*{" .. version_scheme .. "}",
+                                  "revision={" .. tagname_safe .. "}")
+    end
   end
   return content
 end
