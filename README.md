@@ -1,6 +1,5 @@
 # biblatex-nejm
 
-[![Bors enabled](https://bors.tech/images/badge_small.svg)](https://app.bors.tech/repositories/12545)
 [![Build Status](https://travis-ci.com/bcbi/biblatex-nejm.svg?branch=master)](https://travis-ci.com/bcbi/biblatex-nejm/branches)
 
 The `biblatex-nejm` package provides only a formated numeric style of the package
@@ -10,7 +9,9 @@ biblatex. The design based on the New England Journal of Medicine (NEJM).
 
 Please submit all feedback, issues, and pull requests to the GitHub repo: [https://github.com/bcbi/biblatex-nejm](https://github.com/bcbi/biblatex-nejm)
 
-`biblatex-nejm` was originally created by [Marco Daniel](https://github.com/marcodaniel). It is currently maintained by [Dilum Aluthge](https://github.com/DilumAluthge) and the [Brown Center for Biomedical Informatics](https://github.com/bcbi). A full list of contributors to this repository is available [here](https://github.com/bcbi/biblatex-nejm/graphs/contributors).
+`biblatex-nejm` was originally created by [Marco Daniel](https://github.com/marcodaniel).
+
+A full list of contributors to this repository is available [here](https://github.com/bcbi/biblatex-nejm/graphs/contributors).
 
 ## Changelog
 
